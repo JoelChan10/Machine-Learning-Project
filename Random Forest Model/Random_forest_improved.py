@@ -67,13 +67,11 @@ test_balanced_accuracy = balanced_accuracy_score(y_test, y_test_pred)
 test_f1 = f1_score(y_test, y_test_pred)
 
 print("\n=== Model Performance ===")
-print("\nValidation Metrics:")
 print("Random Forest Validation Accuracy:", val_accuracy)
 print("Random Forest Validation Balanced Accuracy:", val_balanced_accuracy)
 print("Random Forest Validation F1-Score:", val_f1)
 
-print("\nTest Metrics:")
-print("Random Forest Test Accuracy:", test_accuracy)
+print("\nRandom Forest Test Accuracy:", test_accuracy)
 print("Random Forest Test Balanced Accuracy:", test_balanced_accuracy)
 print("Random Forest Test F1-Score:", test_f1)
 

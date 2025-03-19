@@ -48,14 +48,21 @@ feature_importance = pd.DataFrame({
 print("\nTop 15 important features:")
 print(feature_importance.head(15))
 
-# Select top 9 features for model training
-top_features = feature_importance['Feature'].head(9).tolist()
-print(f"\nSelected top {len(top_features)} features for model training")
+# Manually select most important features
+selected_features = [
+    'Credit_History',
+    'Good_Credit_History',
+    'IncomeLoanRatio',
+    'Log_TotalIncome',
+    'ApplicantIncome',
+    'Log_LoanAmount',
+    'CoapplicantIncome'
+]
 
 # Create datasets with selected features
-X_train_selected = X_train[top_features]
-X_val_selected = X_val[top_features]
-X_test_selected = X_test[top_features]
+X_train_selected = X_train[selected_features]
+X_val_selected = X_val[selected_features]
+X_test_selected = X_test[selected_features]
 
 # === STEP 2: Hyperparameter Tuning with GridSearchCV ===
 print("\nPerforming hyperparameter tuning...")
@@ -100,13 +107,13 @@ test_accuracy = accuracy_score(y_test, y_test_pred)
 test_balanced_accuracy = balanced_accuracy_score(y_test, y_test_pred)
 test_f1 = f1_score(y_test, y_test_pred)
 
-print(f"\n=== Optimized Model Performance (Top {len(top_features)} Features + Tuned Hyperparameters) ===")
-print(f"Validation Accuracy: {val_accuracy:.4f}")
-print(f"Validation Balanced Accuracy: {val_balanced_accuracy:.4f}")
-print(f"Validation F1-Score: {val_f1:.4f}")
-print(f"Test Accuracy: {test_accuracy:.4f}")
-print(f"Test Balanced Accuracy: {test_balanced_accuracy:.4f}")
-print(f"Test F1-Score: {test_f1:.4f}")
+print(f"\n=== Optimized Model Performance (Top Features + Tuned Hyperparameters) ===")
+print(f"Random Forest Validation Accuracy: {val_accuracy:.4f}")
+print(f"Random Forest Validation Balanced Accuracy: {val_balanced_accuracy:.4f}")
+print(f"Random Forest Validation F1-Score: {val_f1:.4f}")
+print(f"\nRandom Forest Test Accuracy: {test_accuracy:.4f}")
+print(f"Random Forest Test Balanced Accuracy: {test_balanced_accuracy:.4f}")
+print(f"Random Forest Test F1-Score: {test_f1:.4f}")
 
 # === STEP 5: Create visualization for F1-scores ===
 plt.figure(figsize=(10, 6))
