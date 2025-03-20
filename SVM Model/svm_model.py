@@ -14,8 +14,8 @@ from sklearn.decomposition import PCA
 from sklearn.inspection import permutation_importance
 from sklearn.ensemble import GradientBoostingClassifier
 
-df = pd.read_csv("<path_to>/train_u6lujuX_CVtuZ9i.csv")
-fe_df = pd.read_csv("<path_to>/Feature_Engineered_Data.csv")
+df = pd.read_csv("train_u6lujuX_CVtuZ9i.csv")
+fe_df = pd.read_csv("Feature_Engineered_Data.csv")
 
 df_eligible_loan = df[df.Loan_Status == "Y"]
 df_no_loan = df[df.Loan_Status == "N"]
